@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lebenslauf - Lara Jacqueline Volkmer</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- GRUNDLAGEN & VARIABLEN --- */
+        html {
+            font-size: 14.5px; /* Minimal kleiner, damit Seite 1 GARANTIERT auf ein A4-Blatt passt */
+        }
+
+        :root {
+            --bg-color: #f4f6f9;
+            --text-main: #202124;
+            --text-light: #4a4a4a;
+            --accent-line: #d1d5db; 
+            --link-color: #2b5c8f;
+            --font-main: 'Montserrat', sans-serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: var(--font-main);
+            background-color: #cbd5e1;
+            color: var(--text-main);
+            line-height: 1.45; /* Etwas straffer, um Platz zu sparen */
+            display: flex;
+            flex-direction: column; 
+            align-items: center;
+            gap: 2rem; 
+            padding: 2rem 0;
+        }
+
+        /* --- ZWINGENDE A4-EINSTELLUNGEN --- */
+        .cv-page {
+            background-color: var(--bg-color);
+            width: 210mm;  /* Exakte A4 Breite */
+            height: 297mm; /* Exakte A4 Höhe */
+            max-height: 297mm; /* Verhindert das "Überlaufen" auf weitere Seiten */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden; /* Schneidet alles ab, was das Layout sprengen würde */
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- HEADER --- */
+        .cv-header {
+            position: relative;
+            height: 400px; /* Minimal kompakter für mehr Platz unten */
+            background-color: var(--bg-color);
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid var(--accent-line);
+        }
+
+        .header-bg-img {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 55%; 
+            height: 100%;
+            object-fit: cover;
+            object-position: center 15%; 
+            z-index: 1;
+        }
+
+        .header-fade-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 2;
+            background: 
+                linear-gradient(to right, var(--bg-color) 45%, rgba(244,246,249,0) 80%),
+                linear-gradient(to top, var(--bg-color) 0%, rgba(244,246,249,0) 15%);
+        }
+
+        .header-text {
+            position: relative;
+            z-index: 3;
+            width: 65%;
+            padding: 2rem 3rem;
+        }
+
+        .header-text h1 {
+            font-size: 2.5rem;
+            font-weight: 500;
+            line-height: 1.15;
+            margin-bottom: 0.3rem;
+            color: #1a1a1a;
+            letter-spacing: -0.5px;
+        }
+
+        .header-subtitle {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .contact-info { list-style: none; padding-left: 0; margin-top: 1rem; }
+        .contact-info li {
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+        .contact-info a { color: var(--text-light); text-decoration: none; }
+        .contact-icon { width: 14px; height: 14px; fill: currentColor; opacity: 0.8; }
+
+        /* --- HAUPTINHALT & VERTIKALE LINIE --- */
+        .cv-body {
+            display: flex;
+            flex: 1; 
+            padding-bottom: 1rem;
+            height: calc(100% - 400px); /* DIE MATHE STIMMT JETZT MIT DEINEM 400px HEADER ÜBEREIN! */
+        }
+
+        .left-column {
+            flex: 0 0 35%; 
+            padding: 1.5rem 1.5rem 1.5rem 2.5rem; 
+            border-right: 1px solid var(--accent-line); 
+        }
+
+        .right-column {
+            flex: 0 0 65%; 
+            padding: 1.5rem 2.5rem 1.5rem 2rem; 
+        }
+
+        /* --- HORIZONTALE TRENNLINIEN & TYPOGRAFIE --- */
+        section {
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            font-size: 1.05rem;
+            font-weight: 500;
+            margin-top: 0;
+            margin-bottom: 0.8rem;
+            color: #1a1a1a;
+            border-bottom: 1px solid var(--accent-line); 
+            padding-bottom: 0.4rem;
+        }
+
+        p { font-size: 0.85rem; margin-bottom: 0.8rem; color: var(--text-light); }
+        .tech-text { font-size: 0.8rem; color: var(--text-light); line-height: 1.6; }
+
+        ul { list-style-type: none; padding-left: 0; }
+        ul li {
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+            position: relative;
+            padding-left: 14px;
+        }
+        ul li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #1a1a1a;
+            font-weight: bold;
+        }
+
+        a { color: var(--link-color); text-decoration: none; font-size: 0.8rem; display: inline-block; margin-bottom: 0.3rem; }
+        a:hover { text-decoration: underline; }
+
+        .project-item { margin-bottom: 1.2rem; }
+        .project-title { font-weight: 600; font-size: 0.9rem; color: #1a1a1a; margin-bottom: 0.1rem; }
+        
+        .education-item { margin-bottom: 1.5rem; }
+        .education-title { font-weight: 600; font-size: 0.95rem; color: #1a1a1a; margin-bottom: 0.2rem;}
+
+        .cert-group h3 {
+            margin-top: 0;
+            color: #1a1a1a;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+        .cert-group { margin-bottom: 1.5rem; }
+
+        /* --- EXAKTE DRUCK-EINSTELLUNGEN --- */
+        @page {
+            size: A4 portrait;
+            margin: 0; /* Zwingt den Browser, eigene Ränder zu ignorieren */
+        }
+        
+        @media print {
+            body { 
+                background-color: white; 
+                padding: 0; 
+                margin: 0; 
+                gap: 0; 
+                display: block; 
+            }
+            .cv-page { 
+                box-shadow: none; 
+                margin: 0 !important; 
+                border: none;
+                width: 210mm !important;
+                height: 297mm !important;
+                max-height: 297mm !important;
+                page-break-after: always; /* Garantiert: Nach dieser Seite ist Schluss, nächste A4-Seite beginnt */
+                page-break-inside: avoid;
+            }
+            .cv-page-2 { 
+                page-break-after: auto; 
+            }
+            * { 
+                -webkit-print-color-adjust: exact !important; 
+                print-color-adjust: exact !important; 
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cv-page">
+        
+        <header class="cv-header">
+            <img src="profilbild.jpg" alt="Profilbild" class="header-bg-img">
+            <div class="header-fade-overlay"></div>
+            
+            <div class="header-text">
+                <h1>Lara Jacqueline<br>Volkmer</h1>
+                <p class="header-subtitle">Digital Product & UX | Frontend (Web) | AI Workflows</p>
+                
+                <ul class="contact-info">
+                    <li>
+                        <svg class="contact-icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        <a href="https://www.instagram.com/laara.jv" ></a>https://www.instagram.com/laara.jv</a>
+                    </li>
+                    <li>
+                        <svg class="contact-icon" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2 0 .68.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56-1.84-.63-3.37-1.9-4.33-3.56zm2.95-8H5.08c.96-1.66 2.49-2.93 4.33-3.56C8.81 5.55 8.35 6.75 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2 0-.68.07-1.35.16-2h4.68c.09.65.16 1.32.16 2 0 .68-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95c-.96 1.65-2.49 2.93-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2 0-.68-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"/></svg>
+                        <a href="https://larajacqueline-volkmer.github.io/">https://larajacqueline-volkmer.github.io/</a>
+                    </li>
+                    <li>
+                        <svg class="contact-icon" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+                        <a href="https://www.linkedin.com/in/lara-jacqueline-volkmer-aa9067254/" target="_blank">https://www.linkedin.com/in/lara-jacqueline-volkmer-aa9067254/</a>
+                    </li>
+                </ul>
+            </div>
+        </header>
+
+        <div class="cv-body">
+            <aside class="left-column">
+                <section>
+                    <h2>Kernkompetenzen</h2>
+                    <ul>
+                        <li>HTML, CSS, JavaScript (Grundlagen & praktische Anwendung)</li>
+                        <li>Entwicklung einfacher Webanwendungen und interaktiver Logiken</li>
+                        <li>UX-Grundverständnis & strukturierte Nutzerführung</li>
+                        <li>Umsetzung von Webprojekten (inkl. Progressive Web Apps)</li>
+                        <li>Umgang mit AI-Tools und  Anwendung von Prompt Engineering</li>
+                      
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Technologien</h2>
+                    <div class="tech-text">
+                        HTML · CSS · JavaScript · Figma · Canva  · Netlify · AI Tools · Prompt Engineering
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Sprachen</h2>
+                    <ul>
+                        <li>Deutsch – Muttersprache</li>
+                        <li>Englisch – Fortgeschritten</li>
+                    </ul>
+                </section>
+            </aside>
+
+            <main class="right-column">
+                <section>
+                    <h2>Kurzprofil</h2>
+                    <p>UX- und produktorientierte Medieninformatik-Studentin mit Fokus auf Webentwicklung, Nutzerführung und strukturierte digitale Lösungen.<br>Ich entwickle funktionale Webanwendungen und verbinde UX, Frontend und AI-gestützte Workflows zu klaren, gerne nutzbaren Produkten.</p>
+                </section>
+
+                <section>
+                    <h2>Projekte & Praxis</h2>
+                    
+                        <section>
+    <h2>GitHub Repositories</h2>
+    <div class="project-item">
+        <div class="project-title">Code & Entwicklungs-Projekte</div>
+        <a href="https://github.com/larajacqueline-volkmer?tab=repositories" target="_blank">github.com/larajacqueline-volkmer ↗</a>
+        <p style="font-size: 0.8rem; color: var(--text-light); margin-top: 0.3rem;">
+            Eine vollständige Übersicht meiner öffentlichen Quellcodes und Webanwendungen auf Github.
+        </p>
+    </div>
+</section>
+
+                    <div class="project-item">
+    <div class="project-title">MindBridge – Fiktive Firmenwebsite (Uni-Projekt)</div>
+    <a href="https://larajacqueline-volkmer.github.io/mindbridge-website/" target="_blank">https://larajacqueline-volkmer.github.io/mindbridge-website/ ↗</a>
+    <ul>
+        <li>Erfolgreich abgeschlossenes Universitätsprojekt, bewertet mit der Note 1,3 (94/100 Punkten)</li>
+        <li>Eigenverantwortliche Konzeption, UX/UI-Design und Ausarbeitung einer klaren Nutzerführung</li>
+        <li>Technische Umsetzung und Frontend-Entwicklung der Plattform</li>
+    </ul>
+</div>
+
+
+                    <div class="project-item">
+                        <div class="project-title">Digital Product Portfolio – UX, Web & AI Projekte</div>
+                        <a href="https://larajacqueline-volkmer.github.io" target="_blank">https://larajacqueline-volkmer.github.io ↗</a>
+                        <ul>
+                            <li>Konzeption und Entwicklung einer strukturierten Portfolio-Webseite</li>
+                            <li>Integration von Text-, Bild- und AI-generierten Inhalten</li>
+                            <li>Fokus auf klare Nutzerführung und modulare Struktur</li>
+                            <li>Deployment und Testing über Netlify & Github</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-title">Memoria – AI-gestützte Learning Plattform (PWA)</div>
+                        <a href="https://larajacqueline-volkmer.github.io/memoria-by-ljv/" target="_blank">https://larajacqueline-volkmer.github.io/memoria-by-ljv/ ↗</a>
+                        <ul>
+                            <li>Entwicklung einer modularen Lernplattform mit Fokus auf UX und strukturierte User Flows</li>
+                            <li>Integration von PDF-Import und Text-to-Speech-Funktion</li>
+                            <li>Aufbau einer interaktiven Abfrage-Logik zur Wissensfestigung</li>
+                            <li>Umsetzung als Progressive Web App (HTML, CSS, JavaScript)</li>
+                        </ul>
+                    </div>
+
+
+                    <div class="project-item">
+                        <div class="project-title">Neon Block Jump – Browserbasiertes Game</div>
+                        <a href="https://larajacqueline-volkmer.github.io/neon-block-jump-by-ljv/" target="_blank">https://larajacqueline-volkmer.github.io/neon-block-jump-by-ljv/ ↗</a>
+                        <ul>
+                            <li>Entwicklung eines interaktiven Spiels mit JavaScript</li>
+                            <li>Implementierung von Bewegungs-, Kollisions- und Eventlogik</li>
+                            <li>Strukturierte Codebasis zur Erweiterbarkeit and Anpassung</li>
+                        </ul>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <div class="cv-page cv-page-2">
+        
+        <header class="cv-header">
+            <img src="profilbild.jpg" alt="Profilbild" class="header-bg-img">
+            <div class="header-fade-overlay"></div>
+            
+            <div class="header-text">
+                <h1>Lara Jacqueline<br>Volkmer</h1>
+                <p class="header-subtitle">Digital Product & UX | Frontend (Web) | AI Workflows</p>
+                
+                <ul class="contact-info">
+                    <li>
+                        <svg class="contact-icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        volkmer.lara@gmail.com
+                    </li>
+                    <li>
+                        <svg class="contact-icon" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2 0 .68.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56-1.84-.63-3.37-1.9-4.33-3.56zm2.95-8H5.08c.96-1.66 2.49-2.93 4.33-3.56C8.81 5.55 8.35 6.75 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2 0-.68.07-1.35.16-2h4.68c.09.65.16 1.32.16 2 0 .68-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95c-.96 1.65-2.49 2.93-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2 0-.68-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"/></svg>
+                        <a href="https://larajacqueline-volkmer.github.io">https://larajacqueline-volkmer.github.io</a>
+                    </li>
+                    <li>
+                        <svg class="contact-icon" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+                        <a href="https://www.linkedin.com/in/lara-jacqueline-volkmer-aa9067254/">https://www.linkedin.com/in/lara-jacqueline-volkmer-aa9067254//<a>
+                    </li>
+                </ul>
+            </div>
+        </header>
+
+        <div class="cv-body">
+            
+            <aside class="left-column">
+                <section>
+                    <h2>Interessen</h2>
+                    <ul>
+                        <li>Generative KI zur Entwicklung digitaler Produkte</li>
+                        <li>Lernsysteme & Gamification</li>
+                        <li>Kreative Webprojekte</li>
+                        <li>Hörbücher & digitale Wissensformate</li>
+                    </ul>
+                </section>
+            </aside>
+
+            <main class="right-column">
+                <section>
+                    <h2>Ausbildung</h2>
+                    <div class="education-item">
+                        <div class="education-title">Bachelor of Science – Medieninformatik (2022-laufend)</div>
+                        <p style="margin-bottom: 0.5rem; color: #1a1a1a;">IU Internationale Hochschule</p>
+                        <p>Schwerpunkte: Medienpsychologie, Design-Thinking</p>
+                                 <div class="education-item">
+                        <div class="education-title">Fachhochschulreife (2018)</div>
+                        <p style="margin-bottom: 0.5rem; color: #1a1a1a;">Gustav-Heinemann-Gesamtschule Alsdorf</p>
+                        <p>Schwerpunkte: Deutsch und Pädagogik</p>
+                    </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Zertifikate</h2>
+                    
+                    <div class="cert-group">
+                        <h3>LinkedIn Learning</h3>
+                        <ul>
+                            <li>KI-Agenten verstehen und nutzen im Business-Alltag</li>
+                            <li>Multimodales Prompting in ChatGPT</li>
+                            <li>KI-Produktivitätsbooster für Arbeit und Karriere</li>
+                            <li>Microsoft 365 Copilot kennenlernen</li>
+                            <li>Die Zukunft des Lernens am Arbeitsplatz (KI-gestützte Kompetenzentwicklung)</li>
+                        </ul>
+                    </div>
+                        
+                    <div style="display: flex; gap: 4rem;">
+                        <div class="cert-group">
+                            <h3>Mimo</h3>
+                            <ul>
+                                <li>HTML – Grundlagen der Webentwicklung</li>
+                            </ul>
+                        </div>
+
+                        <div class="cert-group">
+                            <h3>Udemy</h3>
+                            <ul>
+                                <li>Apps erstellen ohne Programmieren</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+        </div>
+    </div>
+
+</body>
+</html>
