@@ -296,12 +296,12 @@
 
     
 /* --- STUDIENSTAND-SEITE (ergänzt, bestehende CV-Seiten unverändert) --- */
-.cv-page-3 .cv-header { height: 245px; min-height: 245px; }
-.cv-page-3 .header-bg-img { width: 48%; }
+.cv-page-3 .cv-header { height: 400px; min-height: 400px; flex-shrink: 0; }
+.cv-page-3 .header-bg-img { width: 55%; height: 100%; object-fit: cover; object-position: center 15%; }
 .cv-page-3 .header-text { width: 70%; }
-.cv-page-3 .cv-body { height: calc(100% - 245px); }
-.cv-page-3 .left-column { flex: 0 0 30%; }
-.cv-page-3 .right-column { flex: 0 0 70%; }
+.cv-page-3 .cv-body { height: calc(100% - 400px); }
+.cv-page-3 .left-column { flex: 0 0 35%; }
+.cv-page-3 .right-column { flex: 0 0 65%; }
 .cv-page-3 .study-stat { margin-bottom: 1.25rem; }
 .cv-page-3 .study-stat-label { font-size: .8rem; color: var(--link-color); font-weight: 600; }
 .cv-page-3 .study-stat-value { font-size: 1.35rem; font-weight: 600; color: #202124; }
@@ -316,13 +316,14 @@
 .cv-page-3 .study-module-meta { display: flex; flex-wrap: wrap; gap: .3rem 1rem; margin-top: .2rem; font-size: .75rem; color: var(--text-light); }
 .cv-page-3 .study-summary { background: #e7edf5; border-radius: 6px; padding: .8rem 1rem; margin: .8rem 0 1rem; }
 @media print {
-  .cv-page-3 { page-break-after: auto !important; }
-  .cv-page-2 { page-break-after: always !important; }
+  /* Keine leere Seite zwischen Lebenslauf und Studienübersicht erzeugen */
+  .cv-page-2 { page-break-after: auto !important; break-after: auto !important; }
+  .cv-page-3 { page-break-before: auto !important; break-before: auto !important; page-break-after: auto !important; break-after: auto !important; }
 }
 @media screen and (max-width: 600px) {
   .cv-page-3 { height: auto !important; max-height: none !important; overflow: visible !important; }
-  .cv-page-3 .cv-header { height: 320px; min-height: 220px; }
-  .cv-page-3 .header-bg-img { display: block !important; visibility: visible !important; opacity: 1 !important; width: 48%; height: 100%; object-fit: cover; }
+  .cv-page-3 .cv-header { height: 320px; min-height: 320px; }
+  .cv-page-3 .header-bg-img { display: block !important; visibility: visible !important; opacity: 1 !important; width: 55%; height: 100%; object-fit: cover; object-position: center 15%; }
   .cv-page-3 .header-fade-overlay { display: block; }
   .cv-page-3 .header-text { width: 75%; padding: 1.5rem 1rem; }
   .cv-page-3 .header-text h1 { font-size: 1.7rem; }
