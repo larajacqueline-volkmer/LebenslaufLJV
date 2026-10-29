@@ -378,6 +378,34 @@ body > .cv-page:first-child .project-item ul li {
     }
 }
 
+
+/* --- DRUCKFIX: KEINE ZUSAETZLICHE LEERSEITE VOR DEM STUDIENSTAND --- */
+@media print {
+    html, body {
+        height: auto !important;
+    }
+    body > .cv-page:first-child {
+        break-after: page !important;
+        page-break-after: always !important;
+    }
+    body > .cv-page-2 {
+        break-before: auto !important;
+        page-break-before: auto !important;
+        break-after: page !important;
+        page-break-after: always !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+    }
+    body > .cv-page-3 {
+        break-before: auto !important;
+        page-break-before: auto !important;
+        break-after: auto !important;
+        page-break-after: auto !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+    }
+}
+
 </style>
 
     
