@@ -228,7 +228,7 @@
                 background-color: var(--bg-color);
             }
 
-            .cv-page, .cv-page-2 {
+            .cv-page, .cv-page-2, .cv-page-3 {
                 width: 100% !important;
                 height: auto !important;
                 max-height: none !important;
@@ -320,7 +320,12 @@
   .cv-page-2 { page-break-after: always !important; }
 }
 @media screen and (max-width: 600px) {
-  .cv-page-3 .cv-header { height: auto; min-height: 220px; }
+  .cv-page-3 { height: auto !important; max-height: none !important; overflow: visible !important; }
+  .cv-page-3 .cv-header { height: 320px; min-height: 220px; }
+  .cv-page-3 .header-bg-img { display: block !important; visibility: visible !important; opacity: 1 !important; width: 48%; height: 100%; object-fit: cover; }
+  .cv-page-3 .header-fade-overlay { display: block; }
+  .cv-page-3 .header-text { width: 75%; padding: 1.5rem 1rem; }
+  .cv-page-3 .header-text h1 { font-size: 1.7rem; }
   .cv-page-3 .cv-body { height: auto; flex-direction: column; }
   .cv-page-3 .left-column, .cv-page-3 .right-column { width: 100%; flex: none; }
 }
