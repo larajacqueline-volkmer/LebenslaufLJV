@@ -294,7 +294,38 @@
             }
         }
 
-    </style>
+    
+/* --- STUDIENSTAND-SEITE (ergänzt, bestehende CV-Seiten unverändert) --- */
+.cv-page-3 .cv-header { height: 245px; min-height: 245px; }
+.cv-page-3 .header-bg-img { width: 48%; }
+.cv-page-3 .header-text { width: 70%; }
+.cv-page-3 .cv-body { height: calc(100% - 245px); }
+.cv-page-3 .left-column { flex: 0 0 30%; }
+.cv-page-3 .right-column { flex: 0 0 70%; }
+.cv-page-3 .study-stat { margin-bottom: 1.25rem; }
+.cv-page-3 .study-stat-label { font-size: .8rem; color: var(--link-color); font-weight: 600; }
+.cv-page-3 .study-stat-value { font-size: 1.35rem; font-weight: 600; color: #202124; }
+.cv-page-3 .study-stat-note { font-size: .75rem; color: var(--text-light); }
+.cv-page-3 .study-progress-track { height: 10px; background: #dce2eb; border-radius: 999px; overflow: hidden; margin: .5rem 0; }
+.cv-page-3 .study-progress-fill { height: 100%; width: 11.111%; background: #6f89b3; border-radius: 999px; }
+.cv-page-3 .study-module { border-bottom: 1px solid var(--accent-line); padding: .8rem 0; }
+.cv-page-3 .study-module:last-child { border-bottom: 0; }
+.cv-page-3 .study-module-top { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; }
+.cv-page-3 .study-module-name { font-weight: 600; color: #202124; font-size: .9rem; }
+.cv-page-3 .study-grade { font-weight: 600; color: #202124; white-space: nowrap; }
+.cv-page-3 .study-module-meta { display: flex; flex-wrap: wrap; gap: .3rem 1rem; margin-top: .2rem; font-size: .75rem; color: var(--text-light); }
+.cv-page-3 .study-summary { background: #e7edf5; border-radius: 6px; padding: .8rem 1rem; margin: .8rem 0 1rem; }
+@media print {
+  .cv-page-3 { page-break-after: auto !important; }
+  .cv-page-2 { page-break-after: always !important; }
+}
+@media screen and (max-width: 600px) {
+  .cv-page-3 .cv-header { height: auto; min-height: 220px; }
+  .cv-page-3 .cv-body { height: auto; flex-direction: column; }
+  .cv-page-3 .left-column, .cv-page-3 .right-column { width: 100%; flex: none; }
+}
+
+</style>
 
     
 </head>
@@ -513,6 +544,83 @@
                 </section>
             </main>
 
+        </div>
+    </div>
+
+
+    <div class="cv-page cv-page-3">
+        <header class="cv-header">
+            <img src="profilbild.jpg" alt="Profilbild" class="header-bg-img">
+            <div class="header-fade-overlay"></div>
+            <div class="header-text">
+                <h1>Lara Jacqueline<br>Volkmer</h1>
+                <p class="header-subtitle">Digital Product &amp; UX | Frontend (Web) | AI Workflows</p>
+                <ul class="contact-info">
+                    <li>✉ volkmer.lara@gmail.com</li>
+                    <li>◎ <a href="https://larajacqueline-volkmer.github.io">larajacqueline-volkmer.github.io</a></li>
+                    <li>in <a href="https://www.linkedin.com/in/lara-jacqueline-volkmer-aa9067254/">LinkedIn-Profil</a></li>
+                </ul>
+            </div>
+        </header>
+        <div class="cv-body">
+            <aside class="left-column">
+                <section>
+                    <h2>Übersicht</h2>
+                    <div class="study-stat">
+                        <div class="study-stat-label">ECTS</div>
+                        <div class="study-stat-value">20 / 180</div>
+                        <div class="study-stat-note">Aktueller Stand</div>
+                    </div>
+                    <div class="study-stat">
+                        <div class="study-stat-label">Durchschnitt</div>
+                        <div class="study-stat-value">2,0</div>
+                        <div class="study-stat-note">Gesamtnote laut Transcript</div>
+                    </div>
+                    <div class="study-stat">
+                        <div class="study-stat-label">Abgeschlossen</div>
+                        <div class="study-stat-value">4 Module</div>
+                        <div class="study-stat-note">jeweils 5 ECTS</div>
+                    </div>
+                </section>
+                <section>
+                    <h2>Prüfungsfortschritt</h2>
+                    <div class="study-progress-track"><div class="study-progress-fill"></div></div>
+                    <p>20 / 180 ECTS erreicht (11,1 %)</p>
+                </section>
+            </aside>
+            <main class="right-column">
+                <section>
+                    <h2>Studienstand</h2>
+                    <div class="education-title">Bachelor of Science – Medieninformatik</div>
+                    <p>IU Internationale Hochschule</p>
+                    <ul>
+                        <li>Studienmodell: Fernstudium / 100 % online</li>
+                        <li>Studienbeginn: 01.09.2022</li>
+                        <li>Aktuell: 20 / 180 ECTS (Gesamtnote: Ø 2,0)</li>
+                        <li>Stand des Nachweises: 29.10.2026</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Abgeschlossene Module</h2>
+                    <div class="study-module">
+                        <div class="study-module-top"><div class="study-module-name">Grundlagen der industriellen Softwaretechnik</div><div class="study-grade">1,3</div></div>
+                        <div class="study-module-meta"><span>Modul: IGIS01</span><span>Prüfung: 11.12.2022</span><span>5 ECTS</span></div>
+                    </div>
+                    <div class="study-module">
+                        <div class="study-module-top"><div class="study-module-name">Projekt: Design Thinking</div><div class="study-grade">1,7</div></div>
+                        <div class="study-module-meta"><span>Modul: DLBINGDT01</span><span>Prüfung: 22.09.2025</span><span>5 ECTS</span></div>
+                    </div>
+                    <div class="study-module">
+                        <div class="study-module-top"><div class="study-module-name">Projekt Medieninformatik</div><div class="study-grade">1,3</div></div>
+                        <div class="study-module-meta"><span>Modul: DLBMIPMI01</span><span>Prüfung: 27.07.2026</span><span>5 ECTS</span></div>
+                    </div>
+                    <div class="study-module">
+                        <div class="study-module-top"><div class="study-module-name">Medienpsychologie</div><div class="study-grade">4,0</div></div>
+                        <div class="study-module-meta"><span>Modul: DLBMIMPS01</span><span>Prüfung: 24.03.2025</span><span>5 ECTS</span></div>
+                    </div>
+                </section>
+                <div class="study-summary"><strong>Gesamt: Ø 2,0 · 20 ECTS</strong><p>Angaben laut Transcript of Records vom 29.10.2026.</p></div>
+            </main>
         </div>
     </div>
 
