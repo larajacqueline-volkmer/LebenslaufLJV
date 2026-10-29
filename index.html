@@ -330,6 +330,53 @@
   .cv-page-3 .left-column, .cv-page-3 .right-column { width: 100%; flex: none; }
 }
 
+
+/* --- KORREKTUR: ERSTE CV-SEITE, PROJEKTE VOLLSTÄNDIG SICHTBAR --- */
+body > .cv-page:first-child .cv-header {
+    height: 330px;
+    min-height: 330px;
+    flex-shrink: 0;
+}
+body > .cv-page:first-child .cv-body {
+    min-height: 0;
+    flex: 1 1 auto;
+}
+body > .cv-page:first-child .right-column {
+    padding-top: 1.1rem;
+    padding-bottom: 1rem;
+}
+body > .cv-page:first-child section {
+    margin-bottom: .85rem;
+}
+body > .cv-page:first-child .project-item {
+    margin-bottom: .55rem;
+}
+body > .cv-page:first-child .project-title {
+    font-size: .86rem;
+    line-height: 1.25;
+}
+body > .cv-page:first-child .project-item a {
+    font-size: .72rem;
+    line-height: 1.25;
+    margin-bottom: .12rem;
+    overflow-wrap: anywhere;
+}
+body > .cv-page:first-child .project-item ul li {
+    font-size: .76rem;
+    line-height: 1.28;
+    margin-bottom: .18rem;
+}
+@media print {
+    body > .cv-page:first-child {
+        overflow: hidden;
+        break-after: page;
+    }
+    body > .cv-page:first-child .cv-header {
+        height: 330px !important;
+        min-height: 330px !important;
+    }
+}
+
 </style>
 
     
@@ -453,7 +500,7 @@
                         <ul>
                             <li>Entwicklung eines interaktiven Spiels mit JavaScript</li>
                             <li>Implementierung von Bewegungs-, Kollisions- und Eventlogik</li>
-                            <li>Strukturierte Codebasis zur Erweiterbarkeit and Anpassung</li>
+                            <li>Strukturierte Codebasis zur Erweiterbarkeit und Anpassung</li>
                         </ul>
                     </div>
                 </section>
